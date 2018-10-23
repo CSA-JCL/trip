@@ -2,7 +2,7 @@
 # Comp Prog#
 # 10 22 18#
 
-#Version 1.0.1 Fixed a few bugs
+#Version 1.0.3 Fixed more bugs.
 
 #makes file
 results_file = "tripinfo.txt"
@@ -24,16 +24,20 @@ def clear():
 
 #writes all the info to a txt file
 def submit():
-    list = l.selection_get()
-    opt = options.get()
-    month = spval.get()
-    noets  = note.get("1.0", 'end-1c')
-    str = "{} , {} , {}, {} \n".format(noets, month, list, opt)
-    file = open(results_file, "a")
-    file.write(str)
-    file.close()
-    print("Info added to txt")
-    return
+
+    if l.curselection() ==() or options.get()=="Way of travel." or spval.get()=="Month":
+        print("ERROR: ALL FIELDS NOT FILLED OUT")
+    else:
+        list = l.selection_get()
+        opt = options.get()
+        month = spval.get()
+        noets = note.get("1.0", 'end-1c')
+        str = "{} , {} , {}, {} \n".format(noets, month, list, opt)
+        file = open(results_file, "a")
+        file.write(str)
+        file.close()
+        print("Info added to txt")
+        return
 
 #sets up variables
 options = StringVar()
@@ -104,10 +108,9 @@ notelable.grid(column=15, row=0, columnspan=1, rowspan=1, sticky='NSEW')
 note = Text(window, height=10, width=30)
 note.grid(column=1, row=1, columnspan=30, rowspan=30, sticky="NSEW")
 
-spinlabel = ttk.Label(window, text = "Month:")
-spinlabel.grid(row=0,column= 1, sticky = "N")
-spin = Spinbox(window,from_=1,to=12,textvariable=spval).grid(row=0,column=2, sticky='N')
 
+spin = Spinbox(window,from_=1,to=12,textvariable=spval).grid(row=0,column=2, sticky='N')
+spval.set("Month")
 submit = Button(window, text="Submit", command=submit)
 clear = Button(window, text="Clear", command=clear)
 submit.grid(row=15, column=0, pady=5, sticky=W)
