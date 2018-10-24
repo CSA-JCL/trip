@@ -2,7 +2,7 @@
 # Comp Prog#
 # 10 22 18#
 
-#Version 1.0.5 Fixed more bugs. Made submit show a window, made month box read only
+#Version 1.0.6 Fixed more bugs. Made submit show a window, made month box read only
 
 #makes file
 results_file = "tripinfo.txt"
@@ -72,7 +72,8 @@ l.insert('end', 'Dubai')
 def showHelp():
     window2 = Toplevel(window, width=200, height=100)
     window2.title("About")
-    Label(window2, text="'Trip Log Program' by Jack Lawrence in Mr Davis' Advanced Programming class").grid(row=0,
+    Label(window2, text="'Trip Log Program' by Jack Lawrence in Mr Davis' Advanced Programming class \n"
+          "Fill out all the values and it writes all of them into a txt file.").grid(row=0,
                                                                                                           column=0,
                                                                                                           padx=40)
 
