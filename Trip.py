@@ -2,7 +2,7 @@
 # Comp Prog#
 # 10 22 18#
 
-#Version 1.0.3 Fixed more bugs.
+#Version 1.0.4 Fixed more bugs. Made error message be a window
 
 #makes file
 results_file = "tripinfo.txt"
@@ -26,7 +26,7 @@ def clear():
 def submit():
 
     if l.curselection() ==() or options.get()=="Way of travel." or spval.get()=="Month":
-        print("ERROR: ALL FIELDS NOT FILLED OUT")
+        error()
     else:
         list = l.selection_get()
         opt = options.get()
@@ -128,7 +128,14 @@ window.grid_rowconfigure((30), weight=1)
 
 
 
+def error():
+    window3 = Toplevel(window, width=200, height=100)
+    window3.title("ERROR")
+    Label(window3, text="ERROR: ALL FIELDS MUST BE FILLED").grid(row=0,
+                                                                                                            column=0,
+                                                                                                            padx=40)
 
-
+    window3.deiconify()
+    return
 #runs code
 window.mainloop()
