@@ -2,7 +2,7 @@
 # Comp Prog#
 # 10 22 18#
 
-#Version 1.0.4 Fixed more bugs. Made error message be a window
+#Version 1.0.5 Fixed more bugs. Made submit show a window, made month box read only
 
 #makes file
 results_file = "tripinfo.txt"
@@ -36,7 +36,7 @@ def submit():
         file = open(results_file, "a")
         file.write(str)
         file.close()
-        print("Info added to txt")
+        infoadded()
         return
 
 #sets up variables
@@ -109,8 +109,9 @@ note = Text(window, height=10, width=30)
 note.grid(column=1, row=1, columnspan=30, rowspan=30, sticky="NSEW")
 
 
-spin = Spinbox(window,from_=1,to=12,textvariable=spval).grid(row=0,column=2, sticky='N')
+spin = Spinbox(window,from_=1,to=12,textvariable=spval, state = 'readonly').grid(row=0,column=2, sticky='N')
 spval.set("Month")
+
 submit = Button(window, text="Submit", command=submit)
 clear = Button(window, text="Clear", command=clear)
 submit.grid(row=15, column=0, pady=5, sticky=W)
@@ -126,7 +127,15 @@ window.grid_rowconfigure((15), weight=1)
 window.grid_columnconfigure((30), weight=1)
 window.grid_rowconfigure((30), weight=1)
 
+def infoadded():
+    window4 = Toplevel(window, width=200, height=100)
+    window4.title("Saved")
+    Label(window4, text="Info Added To Text File").grid(row=0,
+                                                                 column=0,
+                                                                 padx=40)
 
+    window4.deiconify()
+    return
 
 def error():
     window3 = Toplevel(window, width=200, height=100)
