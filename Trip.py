@@ -2,7 +2,7 @@
 # Comp Prog#
 # 10 22 18#
 
-#Version 1.0.6 Fixed more bugs. Made submit show a window, made month box read only
+#Version 1.0.7 Fixed more bugs. Made submit show a window, made month box read only
 
 #makes file
 results_file = "tripinfo.txt"
@@ -109,8 +109,8 @@ notelable.grid(column=15, row=0, columnspan=1, rowspan=1, sticky='NSEW')
 note = Text(window, height=10, width=30)
 note.grid(column=1, row=1, columnspan=30, rowspan=30, sticky="NSEW")
 
-
-spin = Spinbox(window,from_=1,to=12,textvariable=spval, state = 'readonly').grid(row=0,column=2, sticky='N')
+Months = ['Janurary', 'Feburary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+spin = Spinbox(window,value=Months,textvariable=spval, state = 'readonly').grid(row=0,column=2, sticky='N')
 spval.set("Month")
 
 submit = Button(window, text="Submit", command=submit)
